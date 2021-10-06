@@ -15,7 +15,7 @@ const { width } = Dimensions.get('screen');
 
 const logo = 'https://store.akamai.steamstatic.com/public/images/applications/store/coin_single.png?v=ce7d5bfe558f07897fe3b21eabb6fc08'
 
-const ShopScreen = () => {
+const ShopScreen = (props) => {
     const availableProducts = useSelector(state => state.products.products);
     const [list, setList] = useState(availableProducts);
     const [searchText, setSearchText] = useState('');
@@ -72,7 +72,7 @@ const ShopScreen = () => {
                     onChangeText={(text) => setSearchText(text)}
                     placeholderTextColor="#888"
                 />
-                <TouchableOpacity onPress={() => handleNameClick()}>
+                <TouchableOpacity onPress={() => handleNameClick(name)}>
                     <FontAwesome name="sort-alpha-asc" size={20} color="white" />
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => handlePriceClick()}>
@@ -105,6 +105,15 @@ const ShopScreen = () => {
                         price={itemData.item.price}
                         imageUrl={itemData.item.image}
                         score={itemData.item.score}
+                        onPress={() => {
+                            props.navigation.navigate('Details', {
+                                id: itemData.item.id,
+                                name: itemData.item.name,
+                                image: itemData.item.image,
+                                score: itemData.item.score,
+                                price: itemData.item.price
+                            })
+                        }}
                     />}
                     ListFooterComponent={<Footer />}
                 />

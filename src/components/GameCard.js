@@ -1,18 +1,21 @@
 import React from 'react';
-import { Image, StyleSheet, Text, View, Dimensions } from 'react-native';
+import { Image, StyleSheet, Text, View, Dimensions, TouchableOpacity } from 'react-native';
 import Fonts from '../styles/Fonts';
 
 const { width, height } = Dimensions.get('screen');
 
 const GameCard = (props) => {
     return (
-        <View style={styles.container}>
+        <TouchableOpacity 
+            style={styles.container} 
+            onPress={props.onPress}
+        >
             <Image source={{ uri: props.imageUrl }} style={styles.image} />
             <View style={styles.column}>
                 <Text style={styles.name} numberOfLines={2}>{props.name}</Text>
                 <Text style={styles.price}>R$ {props.price}</Text>
             </View>
-        </View>
+        </TouchableOpacity>
     );
 };
 

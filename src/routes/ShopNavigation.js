@@ -23,6 +23,7 @@ const ShopNavigation = () => {
             <StackNavigator.Screen
                 name="Details"
                 component={DetailsScreen}
+                options={{ headerShown: false }}
             />
         </StackNavigator.Navigator>
     )

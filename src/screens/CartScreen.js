@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from 'react-native'
 const CartScreen = () => {
     return (
         <View>
-            <Text>CartScreen</Text>
+            <Text>CartScr</Text>
         </View>
     )
 }
